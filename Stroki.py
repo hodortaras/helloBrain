@@ -29,13 +29,17 @@ def random_name(letters):
     return email_name
 
 
-def generate_random_emails():
+def generate_random_email():
          one_name = str(random_name(letters))
          one_domain = str(random_domain(domains))
-         return (one_name  + "@" + one_domain)
+         return (f"{one_name}@{one_domain}")
 
 def deinum(x):
-    return x.isdigit()
+    try:
+        float(x)
+        return True
+    except:
+        return False
 
 def generate_password(m):
     chars = string.ascii_letters + string.digits
@@ -52,6 +56,9 @@ def stuped_func(st):
     else:
         st = st + 'zzz'
         return
+def zamena(st):
+    return st.replace('!','')
+
 
 def summaslow(st):
     l = st.split(sep = ' ')
@@ -76,7 +83,7 @@ def sortstr(st):
 
 if __name__=='__main__':
     if args.metod == 'm1':
-        print('Сгенерирован один рандомный e-mail: ' + generate_random_emails())
+        print('Сгенерирован один рандомный e-mail: ' + generate_random_email())
     elif args.metod == 'm2':
         a = input('Введите простое математическое выражение для вычислений: ')
         print('Ответ: ' + f_eval(a))
@@ -91,7 +98,7 @@ if __name__=='__main__':
         print(stuped_func(stroka))
     elif args.metod == 'm6':
         stroka = input('Введите сстроку для обработки: ')
-        print('Строка с удалёнными "!": ' + stuped_func(stroka))
+        print('Строка с удалёнными "!": ' + zamena(stroka))
     elif args.metod == 'm7':
         stroka = input('Введите сстроку для обработки со словами из цифр: \n ')
         print('Сумма слов состоящих из цифр: ' + str(summaslow(stroka)))
